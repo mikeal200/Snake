@@ -12,7 +12,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	final int x[] = new int[GAME_UNITS];
 	final int y[] = new int[GAME_UNITS];
     int snakeSize = 6;
-    boolean running = true;
+    boolean running = false;
     char direction = 'R';
     int appleX;
     int appleY;
@@ -24,6 +24,13 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setBackground(Color.BLACK);
         this.setFocusable(true);
         this.addKeyListener(new Keys());
+        startGame();
+    }
+
+    public void startGame() {
+        running = true;
+        timer = new Timer(DELAY, this);
+        timer.start();
     }
 
     @Override
